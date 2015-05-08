@@ -2,6 +2,7 @@
 from numpy import *
 import matplotlib.pyplot as plt
 
+T = 100
 dt = 0.125
 time = arange(0,T+dt,dt)
 time_for_refractory_period=0
