@@ -60,8 +60,8 @@ def test_lif():
         0.09143536,  0.10904242, 0.12642939, 0.14359902
     ])
 
-    # compare good an test, using allclose() to take
-    # care of flaoting point inconsistencies.
+    # compare good and test, using allclose() to take
+    # care of floating point inconsistencies.
     assert np.allclose(test_Vs, good_Vs), "Not consistent!"
 
 
