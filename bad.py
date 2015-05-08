@@ -1,3 +1,4 @@
+# %matplotlib inline
 from numpy import *
 import matplotlib.pyplot as plt
 
@@ -23,8 +24,8 @@ def lif(T):
     return time, Vs
 
 
-# Run and plot membrane potential trace
-time, Vs = lif(100)
-plt.plot(time, Vs); plt.title('Leaky Integrate-and-Fire Example');plt.ylabel('Membrane Potential (V)'); plt.xlabel('Time (msec)'); plt.ylim([0, 2]);
-plt.show()
-
+def plot_lif(time, Vs):
+    # Run and plot membrane potential trace
+    plt.plot(time, Vs); plt.title('Leaky Integrate-and-Fire Example');plt.ylabel('Membrane Potential (V)'); plt.xlabel('Time (msec)'); plt.ylim([0, 2]);
+    plt.show()
+    plt.close()

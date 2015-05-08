@@ -1,3 +1,4 @@
+# %matplotlib inline
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -49,6 +50,18 @@ def lif(T):
     return times, Vs
 
 
+def plot_lif(times, Vs):
+    """Plot LIF timecourses"""
+
+    plt.plot(times, Vs)
+    plt.title('Leaky Integrate-and-Fire Example')
+    plt.ylabel('Membrane Potential (V)')
+    plt.xlabel('Time (msec)')
+    plt.ylim([0, 2])
+    plt.show()
+    plt.close()
+
+
 def test_lif():
     """Compare lif(1) to known good values"""
 
@@ -65,13 +78,4 @@ def test_lif():
     assert np.allclose(test_Vs, good_Vs), "Not consistent!"
 
 
-if __name__ == "__main__":
-    # Run and plot membrane potential trace
-    times, Vs = lif(100)
 
-    plt.plot(times, Vs)
-    plt.title('Leaky Integrate-and-Fire Example')
-    plt.ylabel('Membrane Potential (V)')
-    plt.xlabel('Time (msec)')
-    plt.ylim([0, 2])
-    plt.show()
