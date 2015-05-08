@@ -46,15 +46,32 @@ def lif(T):
                 Vs[i] += spike
                 refrac_remaining = t + tau_refrac
 
-    return time, Vs
+    return times, Vs
 
 
-# Run and plot membrane potential trace
-time, Vs = lif(100)
+def test_lif():
+    """Compare lif(1) to known good values"""
 
-plt.plot(time, Vs)
-plt.title('Leaky Integrate-and-Fire Example')
-plt.ylabel('Membrane Potential (V)')
-plt.xlabel('Time (msec)')
-plt.ylim([0, 2])
-plt.show()
+    times, test_Vs = lif(1)
+
+    # Known good values from a short run
+    good_Vs = np.array([
+        0.0, 0.01875, 0.03726562, 0.0555498, 0.07360543,
+        0.09143536,  0.10904242, 0.12642939, 0.14359902
+    ])
+
+    # compare good an test, using allclose() to take
+    # care of flaoting point inconsistencies.
+    assert np.allclose(test_Vs, good_Vs), "Not consistent!"
+
+
+if __name__ == "__main__":
+    # Run and plot membrane potential trace
+    times, Vs = lif(100)
+
+    plt.plot(times, Vs)
+    plt.title('Leaky Integrate-and-Fire Example')
+    plt.ylabel('Membrane Potential (V)')
+    plt.xlabel('Time (msec)')
+    plt.ylim([0, 2])
+    plt.show()
